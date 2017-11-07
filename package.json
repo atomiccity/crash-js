@@ -1,0 +1,20 @@
+{
+  "name": "crash-js",
+  "version": "0.0.1",
+  "description": "A collection of command line utilities.  A good replacement for utilities missing on Windows",
+  "license": "GPL-3.0",
+  "private": true,
+  "scripts": {
+    "doc": "jsdoc lib -r"
+  },
+  "dependencies": {
+    "commander": "^2.11.0",
+    "inquirer": "^3.3.0",
+    "lodash": "^4.17.4",
+    "node": "^8.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "standard": "^10.0.3"
+  }
+}
