@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "A collection of command line utilities.  A good replacement for utilities missing on Windows",
   "license": "GPL-3.0",
-  "private": true,
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/atomiccity/crash-js.git"
+  },
   "scripts": {
     "doc": "jsdoc lib -r"
   },
