@@ -1,7 +1,7 @@
-const crypto = require('crypto')
-const fs = require('fs')
-const path = require('path')
-const readline = require('readline')
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+const readline = require('readline');
 
 /**
  * Compute and return the given hash of the file with the given name.
@@ -13,8 +13,8 @@ const readline = require('readline')
  *                                            type.
  */
 function hashSync (hashName, fileName, callback) {
-  const hash = crypto.createHash(hashName)
-  const readStream = fs.createReadStream(fileName)
+  const hash = crypto.createHash(hashName);
+  const readStream = fs.createReadStream(fileName);
 
   readStream
     .on('data', (data) => {
@@ -64,22 +64,22 @@ function hash (hashName, fileNames, callback) {
 function hashCheck (hashName, checkFileNames, callback) {
   for (let i = 0; i < checkFileNames.length; i++) {
     // Find the file names and hashes in the check file
-    const checkFileName = checkFileNames[i]
-    const readStream = fs.createReadStream(checkFileName)
-    const rl = readline.createInterface({ input: readStream })
+    const checkFileName = checkFileNames[i];
+    const readStream = fs.createReadStream(checkFileName);
+    const rl = readline.createInterface({ input: readStream });
 
     rl
       .on('line', (line) => {
         // Parse hash and file name
-        const tokens = line.split(' ')
+        const tokens = line.split(' ');
 
         // 3 tokens because there is a space token in between
         if (tokens.size !== 3) {
-          const expectedHash = tokens[0]
+          const expectedHash = tokens[0];
 
-          const dirName = path.dirname(checkFileName)
-          const shortFileName = tokens[2]
-          const fileName = path.join(dirName, shortFileName)
+          const dirName = path.dirname(checkFileName);
+          const shortFileName = tokens[2];
+          const fileName = path.join(dirName, shortFileName);
 
           hashSync(hashName, fileName, (err, actualHash) => {
             if (typeof callback === 'function') {
@@ -91,5 +91,5 @@ function hashCheck (hashName, checkFileNames, callback) {
   }
 }
 
-module.exports.hashCheck = hashCheck
-module.exports.hash = hash
+module.exports.hashCheck = hashCheck;
+module.exports.hash = hash;
