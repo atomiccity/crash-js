@@ -17,7 +17,7 @@ if (!program.args.length) program.help();
 const files = program.args;
 
 if (program.check) {
-  // Check the given MD5 check files
+  // Check the given SHA-256 check files
   checksums.hashCheck(hashType, files, (err, fileName, expectedHash, actualHash) => {
     if (err) {
       console.log(err)
@@ -28,7 +28,7 @@ if (program.check) {
     }
   })
 } else {
-  // Perform MD5 sums on the given files
+  // Perform SHA-256 sums on the given files
   checksums.hash(hashType, files, (err, hash) => {
     if (err) {
       console.log(err)
